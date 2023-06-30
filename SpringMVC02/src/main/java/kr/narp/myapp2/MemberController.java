@@ -78,4 +78,12 @@ public class MemberController {
 		
 		return list; // Object->Json (Jackson-databind)
 	}
+	
+	@RequestMapping("/form.do")
+	public String form() {
+		
+		
+		return "uploadform";
+	}
+	
 }
