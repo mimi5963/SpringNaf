@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.inflearn.mapper.BoardMapper">
   <select id="getList" resultType="boardVO">
-  	select * from tb_board
+  	select * from tb_board order by idx desc
   </select>
   
   <insert id="insert" parameterType="boardVO">
@@ -23,6 +23,10 @@
   <update id="update" parameterType="boardVO">
   	update tb_board set title=#{title}, contents=#{contents}
   	where idx=#{idx}
+  </update>
+  
+  <update id="countUpdate" parameterType = "Integer">
+     update tb_board set count=count+1 where idx=#{idx}
   </update>
   
 </mapper>

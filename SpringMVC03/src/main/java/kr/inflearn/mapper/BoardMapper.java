@@ -13,4 +13,5 @@ public interface BoardMapper {
 	public BoardVO read(int bno); //게시물 상세보기
 	public int delete (int bno); // 게시물 삭제
 	public int update (BoardVO board);//게시물 수정
+	public void countUpdate(int bno);
 }
