@@ -2,18 +2,41 @@ package controller;
 
 import java.util.Arrays;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.server.ResponseStatusException;
 
 @Controller
 public class ValidationTestController {
 	
+//	
+//	@ExceptionHandler(IllegalArgumentException.class)
+//	public String illegalExHandle(IllegalArgumentException e) {
+//		System.out.println("사소한 오류야 넘어가~");
+//		return "index";
+//	}
+	@GetMapping("/getip")
+	public void ipPort(@RequestParam IpPort port) {
+		System.out.println("예수");
+		System.out.println(port.getIp() +" ip주소");
+		System.out.println(port.getPort()+" port번호");
+		
+	}
+	@GetMapping("/v/ex")
+	public void exMethod() {
+		
+		throw new IllegalArgumentException("예외!");
+		//throw new ResponseStatusException(HttpStatus.NOT_FOUND,"에러 메시지",new IllegalAccessException("예외2"));
+	}
 	
 	@GetMapping("/v")
 	public String index(ItemVO vo) {
